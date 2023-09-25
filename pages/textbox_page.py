@@ -1,12 +1,7 @@
-import os
-import time
-
-from selenium.webdriver import Keys
-
 from pages.base_page import BasePage
 from locators.textbox_locators import TextBoxPageLocators
 from generator.generator import generated_person
-from generator.generator import generated_file
+
 
 class TextBoxPage(BasePage):
     locators = TextBoxPageLocators()
