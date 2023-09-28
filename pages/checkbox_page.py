@@ -25,7 +25,7 @@ class CheckBoxPage(BasePage):
         data = []
         print(data)
         for box in checked_list:
-            title_item = box.find_element_by_xpath(self.locators.TITLE_ITEM)
+            title_item = box.find_element("xpath", self.locators.TITLE_ITEM)
             data.append(title_item.text)
         return str(data).replace(' ', '').replace('doc', '').replace('.','').lower()
 
