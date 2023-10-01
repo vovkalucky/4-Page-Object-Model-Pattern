@@ -16,7 +16,10 @@ def generated_person():
         mobile='89102345678',
         subject='English',
         current_address=fake.address(),
-        permanent_address=fake.address()
+        permanent_address=fake.address(),
+        age=random.randint(18, 80),
+        salary=random.randint(15000, 250000),
+        department=fake.company()
     )
 
 

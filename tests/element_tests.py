@@ -1,9 +1,11 @@
+import random
 import time
 import allure
 from pages.textbox_page import TextBoxPage
 from pages.form_page import FormPage
 from pages.checkbox_page import CheckBoxPage
 from pages.radio_button_page import RadioButtonPage
+from pages.webtable_page import WebtablePage
 
 
 @allure.suite("Elements")
@@ -61,6 +63,65 @@ class TestElements:
             assert output_yes == "Yes", "'YES' have not been selected"
             assert output_impressive == "Impressive", "'IMPRESSIVE' have not been selected"
             assert output_no == "No", "'NO' have not been selected"
+
+    @allure.feature('Webtable')
+    class TestWebtablePage:
+        @allure.title('Add person')
+        def test_webtable_add_person(self, driver):
+            page = WebtablePage(driver, 'https://demoqa.com/webtables')
+            page.open()
+            new_person = page.add_person()
+            table_result = page.check_new_added_person()
+            assert new_person in table_result, "Person does not added in the table"
+
+        @allure.title('Search person')
+        def test_webtable_search_person(self, driver):
+            page = WebtablePage(driver, 'https://demoqa.com/webtables')
+            page.open()
+            keyword = page.add_person()[random.randint(0, 5)]
+            page.search_person(keyword)
+            row = page.check_search_person()
+            assert keyword in row, "Search does not work!"
+
+        @allure.title('Edit person')
+        def test_webtable_edit_person(self, driver):
+            page = WebtablePage(driver, 'https://demoqa.com/webtables')
+            page.open()
+            person = page.add_person()
+            name = person[1]
+            page.search_person(name)
+            result_expected = page.update_person_info()
+            row = page.check_search_person()
+            print(result_expected)
+            print(row)
+            assert result_expected in row, "Edit not good!"
+
+        @allure.title('Delete person')
+        def test_delete_person(self, driver):
+            page = WebtablePage(driver, 'https://demoqa.com/webtables')
+            page.open()
+            email = page.add_person()[3]
+            page.search_person(email)
+            page.delete_person()
+            result_fact = page.check_delete()
+            result_expected = "No rows found"
+            assert result_fact == result_expected, "Delete person does not work"
+
+        @allure.title('Change count rows')
+        def test_change_count_rows(self, driver):
+            page = WebtablePage(driver, 'https://demoqa.com/webtables')
+            page.open()
+            result_fact = page.select_change_rows()
+            result_expected = [5, 10, 20, 25, 50, 100]
+            assert result_fact == result_expected, "The number in rows does not change correctly"
+
+
+
+
+
+
+
+
 
 
 

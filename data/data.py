@@ -11,3 +11,6 @@ class Person:
     mobile: str = None
     current_address: str = None
     permanent_address: str = None
+    age: int = None
+    salary: int = None
+    department: str = None
