@@ -111,6 +111,8 @@ class TestElements:
         def test_change_count_rows(self, driver):
             page = WebtablePage(driver, 'https://demoqa.com/webtables')
             page.open()
+            page.remove_footer()
+            page.remove_fixedban()
             result_fact = page.select_change_rows()
             result_expected = [5, 10, 20, 25, 50, 100]
             assert result_fact == result_expected, "The number in rows does not change correctly"

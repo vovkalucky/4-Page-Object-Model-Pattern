@@ -67,7 +67,7 @@ class WebtablePage(BasePage):
         count = [5, 10, 20, 25, 50, 100]
         data = []
         for x in count:
-            count_row_button = self.element_is_visible(self.element_is_visible(self.locators.SELECT_ROWS))
+            count_row_button = self.element_is_visible(self.locators.SELECT_ROWS)
             self.go_to_element(count_row_button)
             count_row_button.click()
             self.element_is_visible((By.CSS_SELECTOR, f'option[value="{x}"]')).click()
@@ -77,6 +77,14 @@ class WebtablePage(BasePage):
     def check_count_rows(self):
         list_rows = self.element_are_present(self.locators.FULL_PEOPLE_LIST)
         return len(list_rows)
+
+    def remove_footer(self):
+        self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
+        print('\nRemove Footer')
+
+    def remove_fixedban(self):
+        self.driver.execute_script("document.getElementById('fixedban').style.display = 'none'")
+        print('\nRemove Fixedban')
 
 
 
