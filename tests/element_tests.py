@@ -6,6 +6,7 @@ from pages.form_page import FormPage
 from pages.checkbox_page import CheckBoxPage
 from pages.radio_button_page import RadioButtonPage
 from pages.webtable_page import WebtablePage
+from pages.button_page import ButtonPage
 
 
 @allure.suite("Elements")
@@ -116,6 +117,38 @@ class TestElements:
             result_fact = page.select_change_rows()
             result_expected = [5, 10, 20, 25, 50, 100]
             assert result_fact == result_expected, "The number in rows does not change correctly"
+
+        @allure.feature('ButtonPage')
+        class TestButtonPage:
+            @allure.title('Button double click')
+            def test_double_click_on_button(self, driver):
+                page = ButtonPage(driver, 'https://demoqa.com/buttons')
+                page.open()
+                page.double_click_on_button(driver)
+                result_fact = page.check_double_click_on_button()
+                result_expected = "You have done a double click"
+                assert result_fact == result_expected, "Double click does not work correctly!"
+
+            @allure.title('Dynamic Button click')
+            def test_click_on_button(self, driver):
+                page = ButtonPage(driver, 'https://demoqa.com/buttons')
+                page.open()
+                page.click_on_button()
+                result_fact = page.check_click_on_button()
+                result_expected = "You have done a dynamic click"
+                assert result_fact == result_expected, "Click does not work correctly!"
+
+            @allure.title('Button right click')
+            def test_right_click_on_button(self, driver):
+                page = ButtonPage(driver, 'https://demoqa.com/buttons')
+                page.open()
+                page.right_click_on_button(driver)
+                result_fact = page.check_right_click_on_button()
+                result_expected = "You have done a right click"
+                assert result_fact == result_expected, "Right click does not work correctly!"
+
+
+
 
 
 
