@@ -24,8 +24,8 @@ def generated_person():
 
 
 def generated_file():
-    path = rf'C:\Users\home\PycharmProjects\qa_example_project\test{random.randint(10,100)}.txt'
+    path = rf'C:\Users\home\PycharmProjects\4-Page-Object-Model-Pattern\test{random.randint(10,100)}.txt'
     file = open(path, 'w')
     file.write(f'Helloworld{random.randint(10,50)}')
     file.close()
-    return path
+    return file.name, path
