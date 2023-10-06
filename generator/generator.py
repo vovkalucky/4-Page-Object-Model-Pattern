@@ -4,7 +4,8 @@ from data.data import Person
 from faker import Faker
 #faker_en = Faker("En")
 fake = Faker("ru_Ru")
-
+subjects = ["Hindi", "English", "Maths", "Physics", "Chemistry", "Biology", "Computer Science", "Commerce",
+     "Accounting", "Economics", "Arts", "Social Studies", "History", "Civics"]
 
 def generated_person():
     return Person(
@@ -12,14 +13,16 @@ def generated_person():
         last_name=fake.last_name_male(),
         middle_name=fake.middle_name_male(),
         email=fake.email(),
-        # mobile=fake.phone_number(),
-        mobile='89102345678',
-        subject='English',
+        mobile=''.join(str(random.randint(0, 9)) for _ in range(10)),
+        #mobile='89102345678',
+        #subject='English',
+        subject=random.sample(subjects, random.randint(0, 3)),
         current_address=fake.address(),
         permanent_address=fake.address(),
         age=random.randint(18, 80),
         salary=random.randint(15000, 250000),
-        department=fake.company()
+        department=fake.company(),
+        date_of_birth="11 Oct 1991"
     )
 
 
