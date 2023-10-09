@@ -4,6 +4,8 @@ import time
 from pages.base_page import BasePage
 from locators.browser_window_page_locators import BrowserWinPageLocators
 from locators.browser_window_page_locators import AlertLocators
+from locators.browser_window_page_locators import FramePageLocators
+from locators.browser_window_page_locators import NestedFramePageLocators
 
 
 class BrowserWinPage(BasePage):
@@ -52,5 +54,34 @@ class AlertPage(BasePage):
         prompt.accept()
         text_result = self.element_is_visible(self.locators.PROMPT_BUTTON_RESULT).text
         return input_text, text_result
+
+class FramePage(BasePage):
+    locators = FramePageLocators()
+
+    def check_frame(self, frame_args):
+        if frame_args == 1:
+            frame = self.element_is_visible(self.locators.FRAME_1)
+        if frame_args == 2:
+            frame = self.element_is_visible(self.locators.FRAME_2)
+        width = frame.get_attribute('width')
+        height = frame.get_attribute('height')
+        self.driver.switch_to.frame(frame)
+        text = self.element_is_present(self.locators.TITLE).text
+        self.driver.switch_to.default_content()
+        return [text, width, height]
+
+class NestedFramePage(BasePage):
+    locators = NestedFramePageLocators()
+
+    def check_nested_frame(self):
+        parent_frame = self.element_is_present(self.locators.PARENT_FRAME)
+        self.driver.switch_to.frame(parent_frame)
+        parent_text = self.element_is_present(self.locators.PARENT_TEXT).text
+        child_frame = self.element_is_present(self.locators.CHILD_FRAME)
+        self.driver.switch_to.frame(child_frame)
+        child_text = self.element_is_present(self.locators.CHILD_TEXT).text
+        return parent_text, child_text
+
+
 
 

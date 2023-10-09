@@ -1,9 +1,8 @@
 import os
-import time
 
 from selenium.webdriver import Keys
 
-from pages.base_page import BasePage
+from pages.base_page  import BasePage
 from locators.form_page_locators import FormPageLocators as locators
 from generator.generator import generated_person
 from generator.generator import generated_file

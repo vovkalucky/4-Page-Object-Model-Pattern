@@ -1,7 +1,6 @@
-import random
 import time
 
-from pages.base_page import BasePage
+from pages.base_page  import BasePage
 from locators.dynamic_locators import DynamicLocators
 
 class DynamicElementsPage(BasePage):

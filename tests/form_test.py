@@ -1,10 +1,7 @@
-import random
-import time
 import allure
-import pytest
 from pages.form_page import FormPage
 @allure.suite("Form")
-class TestElements:
+class TestForm:
     @allure.feature('FormPage')
     class TestFormPage:
         @allure.title('Check FormPage')

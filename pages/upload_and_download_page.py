@@ -1,7 +1,5 @@
 import os
 
-from selenium.webdriver.common.by import By
-
 from pages.base_page import BasePage
 from locators.upload_and_download_page_locators import UploadAndDownloadPageLocators
 from generator.generator import generated_file

@@ -1,4 +1,3 @@
-import random
 import time
 import allure
 import pytest
@@ -72,10 +71,10 @@ class TestElements:
         def test_webtable_search_person(self, driver):
             page = WebtablePage(driver, 'https://demoqa.com/webtables')
             page.open()
-            keyword = page.add_person()[random.randint(0, 5)]
+            keyword = page.add_person()[3] #[random.randint(0, 5)]
             page.search_person(keyword)
             row = page.check_search_person()
-            assert keyword in row, "Search does not work!"
+            assert keyword in row, "Search does not work correctly!"
 
         @allure.title('Edit person')
         def test_webtable_edit_person(self, driver):
@@ -95,12 +94,13 @@ class TestElements:
             page = WebtablePage(driver, 'https://demoqa.com/webtables')
             page.open()
             email = page.add_person()[3]
+            time.sleep(1)
             page.search_person(email)
             time.sleep(2)
             page.delete_person()
-            result_fact = page.check_delete()
+            result_actual = page.check_delete()
             result_expected = "No rows found"
-            assert result_fact == result_expected, "Delete person does not work"
+            assert result_actual == result_expected, "Delete person does not work"
 
         @allure.title('Change count rows')
         def test_change_count_rows(self, driver):

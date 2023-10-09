@@ -1,6 +1,3 @@
-import random
-
-import locators.radio_button_locators
 from pages.base_page import BasePage
 from locators.radio_button_locators import RadioButtonPageLocators
 
