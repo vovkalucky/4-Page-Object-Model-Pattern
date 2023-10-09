@@ -6,6 +6,7 @@ from locators.browser_window_page_locators import BrowserWinPageLocators
 from locators.browser_window_page_locators import AlertLocators
 from locators.browser_window_page_locators import FramePageLocators
 from locators.browser_window_page_locators import NestedFramePageLocators
+from locators.browser_window_page_locators import ModalDialogPageLocators
 
 
 class BrowserWinPage(BasePage):
@@ -81,6 +82,29 @@ class NestedFramePage(BasePage):
         self.driver.switch_to.frame(child_frame)
         child_text = self.element_is_present(self.locators.CHILD_TEXT).text
         return parent_text, child_text
+
+
+class ModalDialogPage(BasePage):
+    locators = ModalDialogPageLocators()
+
+    def check_text_in_modal_dialog(self):
+        self.element_is_visible(self.locators.SMALL_BUTTON).click()
+        title = self.element_is_present(self.locators.TITLE_SMALL_MODAL_DIALOG).text
+        text = self.element_is_present(self.locators.TEXT_SMALL_MODAL_DIALOG).text
+        return title, text
+
+    def check_close_of_modal_dialog(self, close):
+        methods_of_close = {
+            'cross': self.locators.SMALL_BUTTON_CLOSE_CROSS,
+            'button': self.locators.SMALL_BUTTON_CLOSE,
+            'dialog_bg': self.locators.DIALOG
+            }
+        self.element_is_visible(self.locators.SMALL_BUTTON).click()
+        result_actual_before_close = self.element_is_present(self.locators.DIALOG).get_attribute('class')
+        close_locator = self.element_is_visible(methods_of_close[close])
+        close_locator.click()
+        result_actual_after_close = self.element_is_present(self.locators.DIALOG).get_attribute('class')
+        return result_actual_before_close, result_actual_after_close
 
 
 
