@@ -12,8 +12,6 @@ on:
           - alerts_frame_win_test.py
           - element_test.py
           - form_test.py
-          - all
-
 jobs:
   test:
     runs-on: ubuntu-latest
