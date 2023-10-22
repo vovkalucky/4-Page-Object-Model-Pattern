@@ -11,9 +11,6 @@ class FormPage(BasePage):
 
         self.driver.execute_script('document.getElementsByTagName("footer")[0].remove()')
     def fill_fields_and_submit(self):
-        # first_name = 'Ivan'
-        # last_name = 'Petrov'
-        # email = 'hello@mail.ru'
         person = generated_person()
         file_name, path = generated_file()
         self.remove_footer()
@@ -31,7 +28,6 @@ class FormPage(BasePage):
         self.element_is_visible(locators.FILE_INPUT).send_keys(path)
         os.remove(path)
         self.element_is_visible(locators.CURRENT_ADDRESS).send_keys(person.current_address)
-        #self.element_is_visible(locators.DATE_OF_BIRTH).send_keys(person.date_of_birth)
         self.element_is_visible(locators.SELECT_STATE).click()
         self.element_is_visible(locators.SELECT_STATE_INPUT).send_keys(Keys.RETURN)
         self.element_is_visible(locators.SELECT_CITY).click()

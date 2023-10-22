@@ -14,8 +14,6 @@ def generated_person():
         middle_name=fake.middle_name_male(),
         email=fake.email(),
         mobile=''.join(str(random.randint(0, 9)) for _ in range(10)),
-        #mobile='89102345678',
-        #subject='English',
         subject=random.sample(subjects, random.randint(0, 3)),
         current_address=fake.address(),
         permanent_address=fake.address(),

@@ -10,7 +10,6 @@ class TestForm:
             form_page.open()
             person = form_page.fill_fields_and_submit()
             result = form_page.form_result()
-
             print(f'Person: {person}')
             print((f'Result: {result}'))
             assert f"{person.first_name} {person.last_name}" == result[0], "Поля имя и фамилия не заполнены"
