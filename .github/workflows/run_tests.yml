@@ -6,7 +6,7 @@ on:
       deployment_target:
         description: Choose target
         required: true
-        default:
+        default: alerts_frame_win_test.py
         type: choice
         options:
           - alerts_frame_win_test.py
