@@ -66,7 +66,7 @@ class TestAlertsFrameWindow:
         def test_frame(self, driver):
             page = FramePage(driver, 'https://demoqa.com/frames')
             page.open()
-            result_actual = page.check_frame(1)
+            result_actual = page.check_frame(1)[0]
             result_expect = "This is a sample page"
             assert result_actual == result_expect, "Text in Frame does not match expected"
 
