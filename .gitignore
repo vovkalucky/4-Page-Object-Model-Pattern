@@ -1,2 +1,6 @@
+.idea
 /venv
+.pytest_cache
+__pycache__
 debug.py
+tests/allure_results
