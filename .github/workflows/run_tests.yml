@@ -13,6 +13,12 @@ on:
           - element_test.py
           - form_test.py
           - one test
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
