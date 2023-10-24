@@ -12,6 +12,7 @@ on:
           - alerts_frame_win_test.py
           - element_test.py
           - form_test.py
+          - one test
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -35,3 +36,6 @@ jobs:
       - name: Run form_test.py
         if: "github.event.inputs.deployment_target == 'form_test.py'"
         run: pytest tests/form_test.py
+      - name: Run form_test.py
+        if: "github.event.inputs.deployment_target == 'one test'"
+        run: pytest tests/alerts_frame_win_test.py::test_new_tab
