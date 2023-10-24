@@ -11,7 +11,7 @@ def driver():
     options.add_argument('--headless')
     driver_service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=driver_service, options=options)
-    #driver = webdriver.Chrome(service=driver_service)
+    ##driver = webdriver.Chrome(service=driver_service)
 
     driver.maximize_window()  #вся ширина экрана
     yield driver  # все что до yield делается до теста
