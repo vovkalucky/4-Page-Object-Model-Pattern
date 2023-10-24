@@ -38,4 +38,5 @@ jobs:
         run: pytest tests/form_test.py
       - name: Run form_test.py
         if: "github.event.inputs.deployment_target == 'one test'"
-        run: pytest tests/alerts_frame_win_test.py::test_new_tab
+        run: pytest tests/alerts_frame_win_test.py::TestAlertsFrameWindow::TestBrowserWinPage::test_new_tab
+
