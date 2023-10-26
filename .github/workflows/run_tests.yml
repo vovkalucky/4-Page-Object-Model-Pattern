@@ -101,7 +101,7 @@ jobs:
         run: pytest tests/alerts_frame_win_test.py::TestAlertsFrameWindow::TestBrowserWinPage::test_new_tab --alluredir=allure-results
         continue-on-error: true
       - name: Run all tests
-        if: "github.event.inputs.deployment_target == 'all"
+        if: "github.event.inputs.deployment_target == 'all'"
         run: pytest --alluredir=allure-results
         continue-on-error: true
 
