@@ -14,7 +14,7 @@ class TestAlertsFrameWindow:
         def test_new_tab(self, driver):
             page = BrowserWinPage(driver, 'https://demoqa.com/browser-windows')
             page.open()
-            result_actual= page.check_opened_new_tab()
+            result_actual = page.check_opened_new_tab()
             result_expect = "This is a sample page"
             assert result_actual == result_expect, "Text in New Tab does not match expected"
 

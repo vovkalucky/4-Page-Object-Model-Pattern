@@ -1,5 +1,5 @@
 import random
-
+import os
 from data.data import Person
 from faker import Faker
 #faker_en = Faker("En")
@@ -25,7 +25,9 @@ def generated_person():
 
 
 def generated_file():
-    path = rf'C:\Users\home\PycharmProjects\4-Page-Object-Model-Pattern\test{random.randint(10,100)}.txt'
+    #path = rf'C:\Users\home\PycharmProjects\4-Page-Object-Model-Pattern\test{random.randint(10,100)}.txt'
+    server_folder_path = os.getcwd()
+    path = os.path.join(server_folder_path, f'test{random.randint(10,100)}.txt')
     file = open(path, 'w')
     file.write(f'Helloworld{random.randint(10,50)}')
     file.close()
