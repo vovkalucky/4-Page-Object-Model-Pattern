@@ -12,4 +12,5 @@ class UploadAndDownloadPage(BasePage):
         self.element_is_present(self.locators.UPLOAD_FILE).send_keys(path)
         os.remove(path)
         text = self.element_is_present(self.locators.UPLOAD_RESULT).text
-        return file_name.split('\\')[-1], text.split('\\')[-1]
+        #return file_name.split('\\')[-1], text.split('\\')[-1]
+        return file_name.split('/')[-1], text.split('/')[-1]
