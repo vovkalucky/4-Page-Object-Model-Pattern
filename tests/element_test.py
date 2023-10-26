@@ -64,6 +64,7 @@ class TestElements:
             page = WebtablePage(driver, 'https://demoqa.com/webtables')
             page.open()
             new_person = page.add_person()
+            time.sleep(2)
             table_result = page.check_new_added_person()
             assert new_person in table_result, "Person does not added in the table"
 
@@ -166,6 +167,7 @@ class TestElements:
         def test_upload(self, driver):
             page = UploadAndDownloadPage(driver, 'https://demoqa.com/upload-download')
             page.open()
+            file_name, result = page.upload_file()
             file_name, result = page.upload_file()
             print(file_name)
             print(result)
