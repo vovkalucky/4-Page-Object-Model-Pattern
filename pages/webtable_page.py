@@ -38,7 +38,8 @@ class WebtablePage(BasePage):
 
     def check_search_person(self):
         delete_button = self.element_is_present(self.locators.DELETE)
-        row = delete_button.find_element("xpath", self.locators.ROW_PARENT)
+        row = delete_button.find_element(By.XPATH, self.locators.ROW_PARENT)
+        #row = self.find_element(By.XPATH, self.locators.ROW_PARENT)
         return row.text.splitlines()
 
     def update_person_info(self):

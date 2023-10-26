@@ -21,6 +21,7 @@ class WebtableLocators:
     DELETE = (By.CSS_SELECTOR, 'span[title="Delete"]')
     ROW_PARENT = './/ancestor::div[@class="rt-tr-group"]'
 
+
     # edit person
     BUTTON_EDIT = (By.CSS_SELECTOR, 'span[title="Edit"]')
     AGE_EDIT = (By.CSS_SELECTOR, '#age')

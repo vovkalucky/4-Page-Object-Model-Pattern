@@ -72,7 +72,9 @@ class TestElements:
             page = WebtablePage(driver, 'https://demoqa.com/webtables')
             page.open()
             keyword = page.add_person()[3] #[random.randint(0, 5)]
+            time.sleep(3)
             page.search_person(keyword)
+            time.sleep(3)
             row = page.check_search_person()
             assert keyword in row, "Search does not work correctly!"
 
@@ -165,6 +167,8 @@ class TestElements:
             page = UploadAndDownloadPage(driver, 'https://demoqa.com/upload-download')
             page.open()
             file_name, result = page.upload_file()
+            print(file_name)
+            print(result)
             assert file_name == result
 
         @allure.title('Download file')
