@@ -66,10 +66,10 @@ jobs:
           name: allure-results
           path:
             allure-results
-          retention-days: 3
+          retention-days: 7
   test:
     runs-on: ubuntu-latest
-    #needs: download-history #тесты запустятся после джобы скачивания истории
+    needs: download-history #тесты запустятся после джобы скачивания истории
     
 
     steps:
@@ -119,7 +119,7 @@ jobs:
           name: allure-results
           path:
             allure-results
-          retention-days: 1
+          retention-days: 7
 
   generate-report:
     runs-on: ubuntu-latest
@@ -140,7 +140,7 @@ jobs:
           name: _site
           path:
             _site
-          retention-days: 1
+          retention-days: 7
 
   publish-report:
     runs-on: ubuntu-latest
