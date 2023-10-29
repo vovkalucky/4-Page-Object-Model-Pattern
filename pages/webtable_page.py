@@ -1,6 +1,4 @@
-
 from selenium.webdriver.common.by import By
-
 from pages.base_page import BasePage
 from locators.webtable_locators import WebtableLocators
 from generator.generator import generated_person
