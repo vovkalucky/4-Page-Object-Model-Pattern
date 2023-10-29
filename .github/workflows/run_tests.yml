@@ -14,6 +14,7 @@ on:
           - form_test.py
           - one test
           - all
+          - widget_test.py
 
 permissions:
   contents: read
@@ -101,6 +102,12 @@ jobs:
         if: "github.event.inputs.deployment_target == 'one test'"
         run: pytest tests/alerts_frame_win_test.py::TestAlertsFrameWindow::TestBrowserWinPage::test_new_tab --alluredir=allure-results
         continue-on-error: true
+
+      - name: Run widget_test.py
+        if: "github.event.inputs.deployment_target == 'widget_test.py'"
+        run: pytest tests/widget_test.py.py --alluredir=allure-results
+        continue-on-error: true
+
       - name: Run all tests
         if: "github.event.inputs.deployment_target == 'all'"
         run: pytest --alluredir=allure-results
